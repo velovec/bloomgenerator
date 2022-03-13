@@ -19,4 +19,4 @@ RUN cmake . && make
 VOLUME ["/bloom_data"]
 WORKDIR "/bloom_data"
 
-ENTRYPOINT "/src/bloomgenerator/bloomgenerator"
+ENTRYPOINT ["/src/bloomgenerator/bloomgenerator"]
