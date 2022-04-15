@@ -6,7 +6,6 @@ RUN apt-get update && \
     libboost-program-options-dev libssl-dev libtool git librabbitmq-dev cron
 
 COPY supervisor/bloomgenerator.conf /etc/supervisor/conf.d/bloomgenerator.conf
-COPY supervisor/crontab /etc/crontab
 
 WORKDIR "/src"
 RUN git clone https://github.com/velovec/libbloom
@@ -16,6 +15,6 @@ RUN make
 COPY . /src/bloomgenerator/
 WORKDIR "/src/bloomgenerator"
 
-RUN cmake . && make
+RUN cmake . && make && chmod +x /src/bloomgenerator/bloomgenerator.sh
 
 VOLUME ["/bloom_data"]
